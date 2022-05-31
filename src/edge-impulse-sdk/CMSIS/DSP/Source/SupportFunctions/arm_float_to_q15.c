@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_float_to_q15.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/support_functions.h"
 
 /**
   @ingroup groupSupport
@@ -308,5 +306,3 @@ void arm_float_to_q15(
 /**
   @} end of float_to_x group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

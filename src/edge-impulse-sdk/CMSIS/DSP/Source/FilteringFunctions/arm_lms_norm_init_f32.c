@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_lms_norm_init_f32.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/filtering_functions.h"
 
 /**
   @ingroup groupFilters
@@ -92,5 +90,3 @@ void arm_lms_norm_init_f32(
 /**
   @} end of LMS_NORM group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

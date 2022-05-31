@@ -18,8 +18,8 @@ EventQueue main_application_queue;
 static unsigned char repl_stack[8 * 1024];
 static AtCmdRepl repl(&main_application_queue, ei_get_serial(), sizeof(repl_stack), repl_stack, 5);
 
-static String appEui = "70B3D57ED003BFCA";
-static String appKey = "1F537E0DDCFCFF43443004F3A88C4294";
+static String appEui = "0000000000000000";
+static String appKey = "B18ABEAE71CDB9CFE8C8954C21CA57DF";
 
 void fill_memory() {
     size_t size = 8 * 1024;

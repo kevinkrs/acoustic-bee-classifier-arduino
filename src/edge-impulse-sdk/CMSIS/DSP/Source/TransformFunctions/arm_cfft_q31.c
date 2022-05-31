@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_cfft_q31.c
@@ -28,11 +26,11 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/transform_functions.h"
 
 
 
-#if defined(ARM_MATH_MVEI)
+#if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
 
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_vec_fft.h"
 
@@ -876,5 +874,3 @@ void arm_cfft_radix4by2_inverse_q31(
   }
 }
 #endif /* defined(ARM_MATH_MVEI) */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

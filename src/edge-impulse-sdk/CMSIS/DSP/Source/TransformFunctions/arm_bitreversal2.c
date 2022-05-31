@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_bitreversal2.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/transform_functions.h"
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h"
 
 
@@ -134,5 +132,3 @@ void arm_bitreversal_16(
     i += 2;
   }
 }
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_mean_q31.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/statistics_functions.h"
 
 /**
   @ingroup groupStats
@@ -54,7 +52,7 @@
                    full precision of intermediate result is preserved.
                    Finally, the accumulator is truncated to yield a result of 1.31 format.
  */
-#if defined(ARM_MATH_MVEI)
+#if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
 void arm_mean_q31(
   const q31_t * pSrc,
         uint32_t blockSize,
@@ -149,5 +147,3 @@ void arm_mean_q31(
 /**
   @} end of mean group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

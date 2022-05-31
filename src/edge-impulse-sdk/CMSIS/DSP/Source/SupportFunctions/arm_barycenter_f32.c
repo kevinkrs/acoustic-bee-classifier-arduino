@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_barycenter_f32.c
@@ -26,13 +24,13 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/support_functions.h"
 #include <limits.h>
 #include <math.h>
 
 
 /**
-  @ingroup groupSupport
+  @ingroup barycenter
  */
 
 
@@ -410,7 +408,5 @@ void arm_barycenter_f32(const float32_t *in, const float32_t *weights, float32_t
 #endif /* defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE) */
 
 /**
- * @} end of groupSupport group
+ * @} end of barycenter group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

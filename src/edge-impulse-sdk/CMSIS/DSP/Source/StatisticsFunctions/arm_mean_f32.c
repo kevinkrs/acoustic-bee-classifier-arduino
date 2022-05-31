@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_mean_f32.c
@@ -28,24 +26,12 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/statistics_functions.h"
 
 /**
   @ingroup groupStats
  */
 
-/**
-  @defgroup mean Mean
-
-  Calculates the mean of the input vector. Mean is defined as the average of the elements in the vector.
-  The underlying algorithm is used:
-
-  <pre>
-      Result = (pSrc[0] + pSrc[1] + pSrc[2] + ... + pSrc[blockSize-1]) / blockSize;
-  </pre>
-
-  There are separate functions for floating-point, Q31, Q15, and Q7 data types.
- */
 
 /**
   @addtogroup mean
@@ -210,5 +196,3 @@ void arm_mean_f32(
 /**
   @} end of mean group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

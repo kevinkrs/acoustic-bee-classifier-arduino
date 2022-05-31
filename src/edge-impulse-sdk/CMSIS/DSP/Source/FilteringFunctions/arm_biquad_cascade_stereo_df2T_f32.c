@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_biquad_cascade_stereo_df2T_f32.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/filtering_functions.h"
 
 /**
   @ingroup groupFilters
@@ -127,11 +125,11 @@ void arm_biquad_cascade_stereo_df2T_f32(
             /*
              * load {d1a, d1b, d1a, d1b}
              */
-            stateVec0 = vldrwq_gather_shifted_offset((uint32_t const *) scratch, loadIdxVec);
+            stateVec0 = (f32x4_t)vldrwq_gather_shifted_offset((uint32_t const *) scratch, loadIdxVec);
             /*
              * load {in0 in1 in0 in1}
              */
-            inVec = vldrwq_gather_shifted_offset((uint32_t const *) pIn, loadIdxVec);
+            inVec = (f32x4_t)vldrwq_gather_shifted_offset((uint32_t const *) pIn, loadIdxVec);
 
             stateVec0 = vfmaq(stateVec0, inVec, b0);
             *pOut++ = vgetq_lane(stateVec0, 0);
@@ -420,5 +418,3 @@ LOW_OPTIMIZATION_EXIT
 /**
   @} end of BiquadCascadeDF2T group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

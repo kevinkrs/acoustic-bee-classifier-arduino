@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_svm_sigmoid_predict_f32.c
@@ -26,12 +24,12 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_functions.h"
 #include <limits.h>
 #include <math.h>
 
 /**
- * @addtogroup groupSVM
+ * @addtogroup sigmoidsvm
  * @{
  */
 
@@ -483,7 +481,5 @@ void arm_svm_sigmoid_predict_f32(
 #endif /* defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE) */
 
 /**
- * @} end of groupSVM group
+ * @} end of sigmoidsvm group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

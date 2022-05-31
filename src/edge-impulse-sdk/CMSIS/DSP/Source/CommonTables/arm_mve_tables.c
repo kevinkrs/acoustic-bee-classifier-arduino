@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_mve_tables.c
@@ -29,7 +27,7 @@
  */
 
  
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h"
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
 
@@ -3765,9 +3763,8 @@ float32_t rearranged_twiddle_stride3_4096_f32[2728]={
 #endif /* !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES) */
 #endif /* defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE) */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
 
-#if defined(ARM_MATH_MVEI) 
+#if defined(ARM_MATH_MVEI)  && !defined(ARM_MATH_AUTOVECTORIZE)
 
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES)
 
@@ -5431,9 +5428,8 @@ q31_t rearranged_twiddle_stride3_4096_q31[2728]={
 #endif /* !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES) */
 #endif /* defined(ARM_MATH_MVEI)  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
 
-#if defined(ARM_MATH_MVEI) 
+#if defined(ARM_MATH_MVEI)  && !defined(ARM_MATH_AUTOVECTORIZE)
 
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES)
 
@@ -6530,5 +6526,3 @@ q15_t rearranged_twiddle_stride3_4096_q15[2728]={
 #endif /* !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES) */
 #endif /* defined(ARM_MATH_MVEI)  */
 
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
@@ -27,13 +25,13 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/distance_functions.h"
 #include <limits.h>
 #include <math.h>
 
 
 /**
-  @addtogroup FloatDist
+  @addtogroup Canberra
   @{
  */
 
@@ -218,7 +216,5 @@ float32_t arm_canberra_distance_f32(const float32_t *pA,const float32_t *pB, uin
 
 
 /**
- * @} end of FloatDist group
+ * @} end of Canberra group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

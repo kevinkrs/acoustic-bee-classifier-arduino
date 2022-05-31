@@ -1,5 +1,5 @@
 /* Edge Impulse inferencing library
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2021 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,8 @@
 
 #ifndef _EI_CLASSIFIER_SMOOTH_H_
 #define _EI_CLASSIFIER_SMOOTH_H_
+
+#if EI_CLASSIFIER_OBJECT_DETECTION != 1
 
 #include <stdint.h>
 
@@ -138,5 +140,7 @@ const char* ei_classifier_smooth_update(ei_classifier_smooth_t *smooth, ei_impul
 void ei_classifier_smooth_free(ei_classifier_smooth_t *smooth) {
     free(smooth->last_readings);
 }
+
+#endif // #if EI_CLASSIFIER_OBJECT_DETECTION != 1
 
 #endif // _EI_CLASSIFIER_SMOOTH_H_

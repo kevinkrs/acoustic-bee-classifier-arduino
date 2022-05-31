@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_not_u16.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/basic_math_functions.h"
 
 /**
   @ingroup groupMath
@@ -63,7 +61,7 @@ void arm_not_u16(
     uint32_t blkCnt;      /* Loop counter */
 
 #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
-    q15x8_t vecSrc;
+    uint16x8_t vecSrc;
 
     /* Compute 8 outputs at a time */
     blkCnt = blockSize >> 3;
@@ -130,5 +128,3 @@ void arm_not_u16(
 /**
   @} end of Not group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_cfft_radix2_f32.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/transform_functions.h"
 
 void arm_radix2_butterfly_f32(
         float32_t * pSrc,
@@ -470,5 +468,3 @@ void arm_radix2_butterfly_inverse_f32(
 #endif /* #if defined (ARM_MATH_DSP) */
 
 }
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

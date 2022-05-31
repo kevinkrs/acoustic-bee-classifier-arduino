@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_or_u8.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/basic_math_functions.h"
 
 /**
   @ingroup groupMath
@@ -57,7 +55,7 @@ void arm_or_u8(
     uint32_t blkCnt;      /* Loop counter */
 
 #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
-    q7x16_t vecSrcA, vecSrcB;
+    uint8x16_t vecSrcA, vecSrcB;
 
     /* Compute 16 outputs at a time */
     blkCnt = blockSize >> 4;
@@ -128,5 +126,3 @@ void arm_or_u8(
 /**
   @} end of Or group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

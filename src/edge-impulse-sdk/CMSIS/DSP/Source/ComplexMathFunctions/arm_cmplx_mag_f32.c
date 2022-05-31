@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_cmplx_mag_f32.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/complex_math_functions.h"
 
 /**
   @ingroup groupCmplxMath
@@ -273,5 +271,3 @@ void arm_cmplx_mag_f32(
 /**
   @} end of cmplx_mag group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

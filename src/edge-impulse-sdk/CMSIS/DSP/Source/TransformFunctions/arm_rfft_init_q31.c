@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_rfft_init_q31.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/transform_functions.h"
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h"
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_const_structs.h"
 
@@ -72,8 +70,15 @@ arm_status arm_rfft_init_q31(
     uint32_t ifftFlagR,
     uint32_t bitReverseFlag)
 {
+     /*  Initialise the default arm status */
+    arm_status status = ARM_MATH_ARGUMENT_ERROR;
+
+#if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES)
+
+#if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || defined(ARM_TABLE_REALCOEF_Q31)
+
     /*  Initialise the default arm status */
-    arm_status status = ARM_MATH_SUCCESS;
+    status = ARM_MATH_SUCCESS;
 
     /*  Initialize the Real FFT length */
     S->fftLenReal = (uint16_t) fftLenReal;
@@ -99,7 +104,7 @@ arm_status arm_rfft_init_q31(
 
         S->twidCoefRModifier = 1U;
 
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),4096);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -114,7 +119,7 @@ arm_status arm_rfft_init_q31(
     case 4096U:
         S->twidCoefRModifier = 2U;
 
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),2048);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -129,7 +134,7 @@ arm_status arm_rfft_init_q31(
     case 2048U:
         S->twidCoefRModifier = 4U;
 
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),1024);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -143,7 +148,7 @@ arm_status arm_rfft_init_q31(
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || (defined(ARM_TABLE_TWIDDLECOEF_Q31_512) && defined(ARM_TABLE_BITREVIDX_FXT_512))
     case 1024U:
         S->twidCoefRModifier = 8U;
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),512);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -157,7 +162,7 @@ arm_status arm_rfft_init_q31(
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || (defined(ARM_TABLE_TWIDDLECOEF_Q31_256) && defined(ARM_TABLE_BITREVIDX_FXT_256))
     case 512U:
         S->twidCoefRModifier = 16U;
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),256);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -171,7 +176,7 @@ arm_status arm_rfft_init_q31(
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || (defined(ARM_TABLE_TWIDDLECOEF_Q31_128) && defined(ARM_TABLE_BITREVIDX_FXT_128))
     case 256U:
         S->twidCoefRModifier = 32U;
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),128);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -185,7 +190,7 @@ arm_status arm_rfft_init_q31(
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || (defined(ARM_TABLE_TWIDDLECOEF_Q31_64) && defined(ARM_TABLE_BITREVIDX_FXT_64))
     case 128U:
         S->twidCoefRModifier = 64U;
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),64);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -199,7 +204,7 @@ arm_status arm_rfft_init_q31(
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || (defined(ARM_TABLE_TWIDDLECOEF_Q31_32) && defined(ARM_TABLE_BITREVIDX_FXT_32))
     case 64U:
         S->twidCoefRModifier = 128U;
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),32);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -213,7 +218,7 @@ arm_status arm_rfft_init_q31(
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || (defined(ARM_TABLE_TWIDDLECOEF_Q31_16) && defined(ARM_TABLE_BITREVIDX_FXT_16))
     case 32U:
         S->twidCoefRModifier = 256U;
-        #if defined(ARM_MATH_MVEI)
+        #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
            status=arm_cfft_init_q31(&(S->cfftInst),16);
            if (status != ARM_MATH_SUCCESS)
            {
@@ -230,6 +235,8 @@ arm_status arm_rfft_init_q31(
         break;
     }
 
+#endif
+#endif
     /* return the status of RFFT Init function */
     return (status);
 }
@@ -237,5 +244,3 @@ arm_status arm_rfft_init_q31(
 /**
   @} end of RealFFT group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

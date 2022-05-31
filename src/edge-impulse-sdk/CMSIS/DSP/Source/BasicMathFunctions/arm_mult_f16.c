@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_mult_f16.c
@@ -26,7 +24,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math_f16.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/basic_math_functions_f16.h"
 
 /**
   @ingroup groupMath
@@ -58,7 +56,8 @@
   @return        none
  */
 
-#if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
+
+#if defined(ARM_MATH_MVE_FLOAT16) && !defined(ARM_MATH_AUTOVECTORIZE) 
 
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_helium_utils.h"
 
@@ -168,5 +167,3 @@ void arm_mult_f16(
 /**
   @} end of BasicMult group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

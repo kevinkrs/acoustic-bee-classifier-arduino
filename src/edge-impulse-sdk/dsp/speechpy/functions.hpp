@@ -1,5 +1,5 @@
 /* Edge Impulse inferencing library
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2021 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,11 @@ public:
      * @returns The mel scale values(or a single mel).
      */
     static float frequency_to_mel(float f) {
-        return 1127.0 * numpy::log(1 + f / 700.0f);
+#if EI_PORTING_RENESASRA65 == 1
+        return 1127.0 * log(1.0 + f / 700.0f);
+#else
+        return 1127.0 * numpy::log((1.0 + f / 700.0f));
+#endif
     }
 
     /**
@@ -62,7 +66,7 @@ public:
     static void zero_handling(float *input, size_t input_size) {
         for (size_t ix = 0; ix < input_size; ix++) {
             if (input[ix] == 0) {
-                input[ix] = FLT_EPSILON;
+                input[ix] = 1e-10;
             }
         }
     }

@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
@@ -27,14 +25,14 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/distance_functions.h"
 #include <limits.h>
 #include <math.h>
 
 
 
 /**
-  @addtogroup FloatDist
+  @addtogroup Correlation
   @{
  */
 
@@ -80,7 +78,5 @@ float32_t arm_correlation_distance_f32(float32_t *pA,float32_t *pB, uint32_t blo
 
 
 /**
- * @} end of FloatDist group
+ * @} end of Correlation group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

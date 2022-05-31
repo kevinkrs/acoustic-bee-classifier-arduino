@@ -1,5 +1,5 @@
 /* Edge Impulse inferencing library
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2021 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,6 +46,11 @@ uint64_t ei_read_timer_us() {
     return micros();
 }
 
+void ei_serial_set_baudrate(int baudrate)
+{
+
+}
+
 /**
  *  Printf function uses vsnprintf and output using Arduino Serial
  */
@@ -63,7 +68,7 @@ __attribute__((weak)) void ei_printf(const char *format, ...) {
 }
 
 __attribute__((weak)) void ei_printf_float(float f) {
-    ei_printf("%f", f);
+    Serial.print(f, 6);
 }
 
 __attribute__((weak)) void *ei_malloc(size_t size) {

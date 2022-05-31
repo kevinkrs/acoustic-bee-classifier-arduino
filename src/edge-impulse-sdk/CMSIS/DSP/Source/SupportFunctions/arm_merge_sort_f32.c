@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_merge_sort_f32.c
@@ -28,8 +26,8 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
-#include "edge-impulse-sdk/CMSIS/DSP/PrivateInclude/arm_sorting.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/support_functions.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_sorting.h"
 
 
 static void topDownMerge(float32_t * pA, uint32_t begin, uint32_t middle, uint32_t end, float32_t * pB, uint8_t dir)
@@ -127,5 +125,3 @@ void arm_merge_sort_f32(
 /**
   @} end of Sorting group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

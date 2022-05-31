@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_shift_q7.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/basic_math_functions.h"
 
 /**
   @ingroup groupMath
@@ -54,7 +52,7 @@
                    Results outside of the allowable Q7 range [0x80 0x7F] are saturated.
  */
 
-#if defined(ARM_MATH_MVEI)
+#if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
 
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_helium_utils.h"
 
@@ -136,10 +134,10 @@ void arm_shift_q7(
       in4 = *pSrc++;
 
     /* Pack and store result in destination buffer (in single write) */
-      write_q7x4_ia (&pDst, __PACKq7(__SSAT((in1 << shiftBits), 8),
-                                     __SSAT((in2 << shiftBits), 8),
-                                     __SSAT((in3 << shiftBits), 8),
-                                     __SSAT((in4 << shiftBits), 8) ));
+      write_q7x4_ia (&pDst, __PACKq7(__SSAT(((q15_t) in1 << shiftBits), 8),
+                                     __SSAT(((q15_t) in2 << shiftBits), 8),
+                                     __SSAT(((q15_t) in3 << shiftBits), 8),
+                                     __SSAT(((q15_t) in4 << shiftBits), 8) ));
 #else
       *pDst++ = (q7_t) __SSAT(((q15_t) *pSrc++ << shiftBits), 8);
       *pDst++ = (q7_t) __SSAT(((q15_t) *pSrc++ << shiftBits), 8);
@@ -225,5 +223,3 @@ void arm_shift_q7(
 /**
   @} end of BasicShift group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

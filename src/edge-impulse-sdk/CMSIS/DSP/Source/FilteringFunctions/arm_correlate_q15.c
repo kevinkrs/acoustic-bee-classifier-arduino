@@ -1,5 +1,3 @@
-#include "edge-impulse-sdk/dsp/config.hpp"
-#if EIDSP_LOAD_CMSIS_DSP_SOURCES
 /* ----------------------------------------------------------------------
  * Project:      CMSIS DSP Library
  * Title:        arm_correlate_q15.c
@@ -28,7 +26,7 @@
  * limitations under the License.
  */
 
-#include "edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h"
+#include "edge-impulse-sdk/CMSIS/DSP/Include/dsp/filtering_functions.h"
 
 /**
   @ingroup groupFilters
@@ -60,7 +58,7 @@
   @remark
                    Refer to \ref arm_correlate_opt_q15() for a faster implementation of this function using scratch buffers.
  */
-#if defined(ARM_MATH_MVEI)
+#if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_helium_utils.h"
 #include "edge-impulse-sdk/CMSIS/DSP/Include/arm_vec_filtering.h"
 
@@ -903,5 +901,3 @@ void arm_correlate_q15(
 /**
   @} end of Corr group
  */
-
-#endif // EIDSP_LOAD_CMSIS_DSP_SOURCES

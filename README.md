@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Documentation
 
 # Hardware List
@@ -135,4 +134,3 @@ Alternatively, connect a serial monitor to the development board, press `b` to s
 ```
 $ edge-impulse-framebuffer2jpg -f framebuffer.txt -w 64 -h 64 -o framebuffer.jpg
 ```
->>>>>>> master

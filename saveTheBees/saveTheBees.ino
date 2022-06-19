@@ -51,21 +51,14 @@ void setup()
     Serial.print("Your device EUI is: ");
     Serial.println(modem.deviceEUI());
 
-    int connected = modem.joinOTAA(appEui, appKey);
-    int timer = 0;
+    
     Serial.println("Trying to connect...");
+    int connected = modem.joinOTAA(appEui, appKey);
 
   if(!connected){
     while(!connected){
         Serial.println("Something went wrong; are you indoor? Move near a window. Retrying in 10 seconds.");
         connected = modem.joinOTAA(appEui, appKey);
-        while(timer < 8){
-        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-        delay(1000);                       // wait for a second
-        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-        delay(1000);
-        timer++;
-      }
     }
   } else {
     Serial.println("Connected successfully");
@@ -91,12 +84,9 @@ void setup()
  */
 void loop()
 {
-    ei_printf("Starting inferencing in 60 seconds...\n");
+    ei_printf("Starting inferencing in 10 minutes...\n");
     
-    // uncomment below line for working version
-    // delay(120000)
-
-    delay(60000);
+    delay(600000);
 
     ei_printf("Recording...\n");
 
@@ -135,7 +125,7 @@ void loop()
     for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
         ei_printf("    %s: ", result.classification[ix].label);
         results += result.classification[ix].value;
-        results += "\n";
+        results += " ";
         res[ix] = result.classification[ix].value;
         ei_printf_float(result.classification[ix].value);
         ei_printf("\n");
@@ -147,10 +137,10 @@ void loop()
     ei_printf("\n");
 #endif
     
-  Serial.println(results);
-  
+
     int err;
     modem.beginPacket();
+    modem.setPort(3);
     modem.print(results);
     err = modem.endPacket(true);
     if (err > 0) {

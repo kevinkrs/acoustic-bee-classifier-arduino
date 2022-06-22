@@ -4,7 +4,7 @@
 
 /* Includes ---------------------------------------------------------------- */
 #include <PDM.h>
-#include <saveTheBees_inferencing.h>
+#include <saveTheBees_v2_inferencing.h>
 #include <MKRWAN_v2.h>
 #include "arduino_secrets.h"
 

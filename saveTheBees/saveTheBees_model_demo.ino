@@ -1,5 +1,3 @@
-// Demo version of trained model without LoRa connection.
-
 
 
 // If your target is limited in memory remove this macro to save 10K RAM
@@ -8,7 +6,7 @@
 
 /* Includes ---------------------------------------------------------------- */
 #include <PDM.h>
-#include <saveTheBees_inferencing.h>
+#include <saveTheBees_v2_inferencing.h>
 
 
 /** Audio buffers, pointers and selectors */

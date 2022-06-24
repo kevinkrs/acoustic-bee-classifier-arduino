@@ -213,9 +213,9 @@ function Decoder(bytes, port) {
 
 ### Preparation
 
-1. Download Github Repo
+1. Download GitHub Repo
     
-    https://github.com/kevinkrs7/DigitalInovationLab-Bees
+    (https://github.com/kevinkrs7/acoustic-bee-classifier-arduino)
     
 2. Download Arduino IDE 
     

@@ -35,7 +35,7 @@ void setup()
     Serial.println("SaveTheBees V1");
 
     pinMode(LEDG, OUTPUT); // Set green LED as output
-    
+
 
     //summary of inferencing settings (from model_metadata.h)
     ei_printf("Inferencing settings:\n");
@@ -58,13 +58,12 @@ void setup()
 void loop()
 {
     ei_printf("Starting inferencing in 20 seconds...\n");
-    
+
 
     delay(12000);
 
     digitalWrite(LEDG, ON);
     ei_printf("Recording...\n");
-    
 
     bool m = microphone_inference_record();
     if (!m) {
@@ -89,7 +88,7 @@ void loop()
     }
 
     // Get predictions
-    
+
     String results = "";
     // Backup: Saving as float in 2 dimensional array to get all decimals.
     float res[2];
@@ -113,8 +112,6 @@ void loop()
     ei_printf_float(result.anomaly);
     ei_printf("\n");
 #endif
-    
-   
 }
 
 

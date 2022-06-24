@@ -42,7 +42,7 @@ void setup() {
 
   pinMode(LEDR, OUTPUT);  // Set red LED as output
   pinMode(LEDG, OUTPUT);  // Set green LED as output
-  
+
 
   // Set up connection with The Things Network
   // change this to your regional band (eg. US915, AS923, ...)
@@ -187,20 +187,12 @@ void loop_classification() {
   }
 
 
-void loop_saveRecording() {
-  // Save data to SD Card
-  // TODO
-}
-
-
 void loop() {
   if(!is_connected){
     loop_connection();
   } else {
      loop_classification();
   }
- 
- 
 }
 
 /**
